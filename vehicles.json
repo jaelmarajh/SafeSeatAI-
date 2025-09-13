@@ -1,0 +1,10 @@
+{
+  "honda civic 2022": {
+    "centerLatch": false,
+    "rearSeatSlope": "steep"
+  },
+  "toyota rav4 2020": {
+    "centerLatch": true,
+    "rearSeatSlope": "normal"
+  }
+}

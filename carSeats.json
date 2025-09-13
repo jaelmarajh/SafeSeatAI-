@@ -1,0 +1,10 @@
+{
+  "graco snugride 35": {
+    "maxWeight": 35,
+    "mustBeRearFacing": true
+  },
+  "nuna pipa lite": {
+    "maxWeight": 32,
+    "mustBeRearFacing": true
+  }
+}
