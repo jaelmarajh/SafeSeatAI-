@@ -29,18 +29,18 @@ export default function Check() {
         }),
       });
       const result = await res.json();
-      router.push({ pathname: '/results', query: { feedback: JSON.stringify(result.feedback), status: result.status } });
+      router.push({ pathname: '/results', query: { feedback: JSON.stringify(result.feedback) } });
     };
     reader.readAsDataURL(file);
   }
 
   return (
-    <div>
-      <h1>Upload Car Seat</h1>
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+      <h1>Upload Your Car Seat</h1>
       <form onSubmit={handleSubmit}>
-        <input type="file" accept="image/*" required onChange={e => setFile(e.target.files?.[0] || null)} />
-        <input type="number" placeholder="Age" value={childAge} onChange={e => setChildAge(e.target.value)} />
-        <input type="number" placeholder="Weight" value={childWeight} onChange={e => setChildWeight(e.target.value)} />
+        <input type="file" accept="image/*" onChange={e => setFile(e.target.files?.[0] || null)} />
+        <input type="number" placeholder="Child Age (years)" value={childAge} onChange={e => setChildAge(e.target.value)} />
+        <input type="number" placeholder="Child Weight (lbs)" value={childWeight} onChange={e => setChildWeight(e.target.value)} />
         <input type="text" placeholder="Car Seat Model" value={carSeatModel} onChange={e => setCarSeatModel(e.target.value)} />
         <input type="text" placeholder="Vehicle Model" value={vehicleModel} onChange={e => setVehicleModel(e.target.value)} />
         <button type="submit">{loading ? 'Analyzing...' : 'Submit'}</button>
