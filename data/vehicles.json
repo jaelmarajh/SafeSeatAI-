@@ -1,0 +1,57 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+import carSeats from '../../data/carSeats.json';
+import vehicles from '../../data/vehicles.json';
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { photo, childAge, childWeight, carSeatModel, vehicleModel } = req.body;
+  const feedback = [];
+
+  const seat = carSeats[carSeatModel?.toLowerCase()];
+  const vehicle = vehicles[vehicleModel?.toLowerCase()];
+
+  // Car seat checks
+  if (seat) {
+    if (childWeight > seat.maxWeight) {
+      feedback.push({
+        issue: 'Over Weight Limit',
+        suggestion: `The ${carSeatModel} has a max weight of ${seat.maxWeight} lbs.`,
+      });
+    }
+    if (seat.mustBeRearFacing && childAge > 2) {
+      feedback.push({
+        issue: 'Rear-Facing Violation',
+        suggestion: `The ${carSeatModel} must be rear-facing for children under 2.`,
+      });
+    }
+  } else {
+    feedback.push({
+      issue: 'Unknown Car Seat',
+      suggestion: 'We couldn’t find this car seat model. Please double-check your entry.',
+    });
+  }
+
+  // Vehicle checks
+  if (vehicle) {
+    if (!vehicle.centerLatch) {
+      feedback.push({
+        issue: 'No Center LATCH',
+        suggestion: `The ${vehicleModel} doesn't support a center LATCH installation.`,
+      });
+    }
+    if (vehicle.rearSeatSlope === 'steep') {
+      feedback.push({
+        issue: 'Steep Seat Warning',
+        suggestion: `The ${vehicleModel} has a steep rear seat. Ensure correct recline angle.`,
+      });
+    }
+  } else {
+    feedback.push({
+      issue: 'Unknown Vehicle',
+      suggestion: 'We couldn’t find this vehicle model. Please double-check your entry.',
+    });
+  }
+
+  res.status(200).json({ feedback });
+}
+
+
