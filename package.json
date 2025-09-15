@@ -1,7 +1,6 @@
 {
   "name": "safe-seat-ai",
   "version": "1.0.0",
-  "description": "AI-powered car seat checker",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,8 +11,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
-  "devDependencies": {},
-  "license": "MIT"
+  "devDependencies": {}
 }
+
 
 
