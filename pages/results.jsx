@@ -1,11 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-type FeedbackItem = {
-  issue: string;
-  suggestion: string;
-};
-
 export default function Results() {
   const router = useRouter();
   const [feedback, setFeedback] = useState<FeedbackItem[]>([]);
