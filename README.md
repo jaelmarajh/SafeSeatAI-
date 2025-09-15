@@ -19,7 +19,7 @@ SafeSeatAI helps parents, caregivers, and technicians verify if a child's car se
 
 ## 📦 Tech Stack
 
-- **Frontend:** Next.js (TypeScript)
+- **Frontend:** Next.js (javascript)
 - **Backend:** Vercel Edge Functions
 - **Data:** Custom JSON lookups for car seat + vehicle models
 
